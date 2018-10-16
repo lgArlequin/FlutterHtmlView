@@ -471,7 +471,7 @@ class HtmlParser {
         textDecoration = TextDecoration.underline;
         break;
     }
-
+    
     if (style != null) {
       matches = this._style.allMatches(style);
 
@@ -497,6 +497,12 @@ class HtmlParser {
           case 'font-style':
             fontStyle =
                 (value == 'italic') ? FontStyle.italic : FontStyle.normal;
+
+            break;
+
+          case 'font-size':
+            value = value.replaceAll('px', '').trim();
+            fontSize = double.parse(value);
 
             break;
 
